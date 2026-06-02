@@ -2064,6 +2064,38 @@ footer {
   .quick-grid { grid-template-columns: 1fr; }
 }
 
+/* ========== SOCIAL LINKS ========== */
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.social-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s;
+  color: var(--muted);
+}
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+.social-icon:hover {
+  background: var(--accent);
+  color: #031016;
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+
 /* ========== BUSINESS HOURS ========== */
 .business-hours {
   display: flex;
