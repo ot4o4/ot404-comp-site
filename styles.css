@@ -665,6 +665,8 @@ h2 {
   padding: 28px;
   border-radius: 23px;
   transition: border-color 250ms ease, transform 250ms ease, background 250ms ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .service-card:hover,
@@ -743,7 +745,7 @@ h2 {
 
 .service-tags {
   display: flex;
-  margin-top: 132px;
+  margin-top: auto;
   flex-wrap: wrap;
   gap: 7px;
 }
