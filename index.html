@@ -59,12 +59,26 @@
         "latitude": 14.7645,
         "longitude": -17.3660
       },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-        "opens": "09:00",
-        "closes": "19:00"
-      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"],
+          "opens": "10:00",
+          "closes": "23:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Friday",
+          "opens": "15:00",
+          "closes": "23:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday","Sunday"],
+          "opens": "10:00",
+          "closes": "23:00"
+        }
+      ],
       "priceRange": "$$",
       "areaServed": {
         "@type": "City",
@@ -587,9 +601,9 @@
               <div>
                 <small>Horaires d'ouverture</small>
                 <div class="hours-grid">
-                  <span>Lun – Ven</span><strong>9h00 – 19h00</strong>
-                  <span>Samedi</span><strong>9h00 – 17h00</strong>
-                  <span>Dimanche</span><strong class="closed">Fermé</strong>
+                  <span>Lun – Jeu</span><strong>10h00 – 23h00</strong>
+                  <span>Vendredi</span><strong>15h00 – 23h00</strong>
+                  <span>Sam – Dim</span><strong>10h00 – 23h00</strong>
                 </div>
               </div>
             </div>
