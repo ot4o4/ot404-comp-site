@@ -1,3 +1,12 @@
+// Page Loader
+window.addEventListener('load', () => {
+  const loader = document.getElementById('pageLoader');
+  if (loader) {
+    setTimeout(() => loader.classList.add('loaded'), 800);
+    setTimeout(() => loader.remove(), 1500);
+  }
+});
+
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 const navItems = document.querySelectorAll(".nav-links a");
@@ -36,7 +45,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 
 if (!prefersReducedMotion) {
   const motionSurfaces = document.querySelectorAll(
-    ".nav-shell, .service-card, .expertise-card, .trust-card, .review-invite, .contact-details > a"
+    ".nav-shell, .service-card, .expertise-card, .trust-card, .review-invite, .contact-details > a, .testimonial-card, .faq-item, .stat-card"
   );
   const motionIcons = document.querySelectorAll(".service-icon, .mini-icon, .detail-icon");
 
@@ -72,3 +81,42 @@ const sectionObserver = new IntersectionObserver(
 sections.forEach((section) => sectionObserver.observe(section));
 
 document.querySelector("#year").textContent = new Date().getFullYear();
+
+// Stats Counter Animation
+const counterObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const counters = entry.target.querySelectorAll(".stat-number");
+      counters.forEach((counter) => {
+        const target = parseInt(counter.dataset.target);
+        const duration = 2000;
+        const start = performance.now();
+        const animate = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          counter.textContent = Math.floor(eased * target);
+          if (progress < 1) requestAnimationFrame(animate);
+          else counter.textContent = target;
+        };
+        requestAnimationFrame(animate);
+      });
+      counterObserver.unobserve(entry.target);
+    });
+  },
+  { threshold: 0.3 }
+);
+
+const statsSection = document.getElementById("stats");
+if (statsSection) counterObserver.observe(statsSection);
+
+// Scroll to Top
+const scrollTopBtn = document.getElementById("scrollTop");
+if (scrollTopBtn) {
+  window.addEventListener("scroll", () => {
+    scrollTopBtn.classList.toggle("visible", window.scrollY > 600);
+  });
+  scrollTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
