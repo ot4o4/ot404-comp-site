@@ -749,6 +749,9 @@ h2 {
 }
 
 .service-tags span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 8px 10px;
   border: 1px solid rgba(200, 255, 246, 0.1);
   border-radius: 20px;
@@ -757,6 +760,12 @@ h2 {
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.05em;
+}
+.tag-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--accent);
+  flex-shrink: 0;
 }
 
 .circuit-showcase {
