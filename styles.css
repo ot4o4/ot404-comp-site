@@ -2090,10 +2090,32 @@ footer {
   fill: currentColor;
 }
 .social-icon:hover {
-  background: var(--accent);
-  color: #031016;
-  border-color: var(--accent);
   transform: translateY(-3px);
+}
+.social-icon.facebook:hover {
+  background: #1877F2;
+  color: #fff;
+  border-color: #1877F2;
+}
+.social-icon.instagram:hover {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: #fff;
+  border-color: #dc2743;
+}
+.social-icon.tiktok:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+.social-icon.whatsapp:hover {
+  background: #25D366;
+  color: #fff;
+  border-color: #25D366;
+}
+.social-icon.youtube:hover {
+  background: #FF0000;
+  color: #fff;
+  border-color: #FF0000;
 }
 
 /* ========== BUSINESS HOURS ========== */
