@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page introuvable | OT404 COMP.</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="theme-color" content="#031016" />
+    <meta name="description" content="La page demandée est introuvable. Retournez à l'accueil ou contactez OT404 COMP. à Dakar." />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="canonical" href="https://ot404.com/404.html" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .error-shell {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        text-align: center;
+      }
+      .error-card {
+        max-width: 520px;
+        padding: 40px 32px;
+      }
+      .error-code {
+        font-size: 4.5rem;
+        font-weight: 800;
+        letter-spacing: -0.04em;
+        color: var(--accent);
+        line-height: 1;
+        margin: 0 0 8px;
+      }
+      .error-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-top: 24px;
+      }
+      .error-hint {
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-top: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Aller au contenu</a>
+    <div class="noise"></div>
+    <main class="error-shell" id="main">
+      <div class="glass error-card reveal">
+        <div class="eyebrow">Erreur 404</div>
+        <h1 class="error-code">404</h1>
+        <h2>Page introuvable</h2>
+        <p>La page que vous cherchez n'existe pas ou a été déplacée.</p>
+        <div class="error-actions">
+          <a class="button button-primary" href="/">Retour à l'accueil</a>
+          <a class="button button-glass" href="https://wa.me/221772947958?text=Bonjour%20OT404%20COMP.%2C%20je%20n%27ai%20pas%20trouv%C3%A9%20une%20page%20sur%20votre%20site%20%3A%20">Nous contacter</a>
+        </div>
+        <p class="error-hint">OT404 COMP. — Microsoudure &amp; réparation électronique à Dakar</p>
+      </div>
+    </main>
+  </body>
+</html>

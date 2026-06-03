@@ -23,7 +23,7 @@
     <meta property="og:url" content="https://ot404.com/" />
     <meta property="og:title" content="OT404 COMP. | Microsoudure & réparation électronique" />
     <meta property="og:description" content="Téléphones, ordinateurs et cartes électroniques : OT404 COMP. diagnostique, répare et redonne vie à vos appareils avec une expertise pointue en microsoudure. Dakar, Sénégal." />
-    <meta property="og:image" content="https://ot404.com/ot404-preview.png" />
+    <meta property="og:image" content="https://ot404.com/ot404-preview.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="OT404 COMP. — Microsoudure & réparation électronique à Dakar" />
@@ -35,7 +35,7 @@
     <meta name="twitter:url" content="https://ot404.com/" />
     <meta name="twitter:title" content="OT404 COMP. | Microsoudure & réparation électronique" />
     <meta name="twitter:description" content="Téléphones, ordinateurs et cartes électroniques : diagnostic précis et microsoudure à Dakar." />
-    <meta name="twitter:image" content="https://ot404.com/ot404-preview.png" />
+    <meta name="twitter:image" content="https://ot404.com/ot404-preview.jpg" />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -46,7 +46,7 @@
       "description": "Microsoudure et réparation électronique à Dakar. Téléphones, ordinateurs et cartes électroniques.",
       "url": "https://ot404.com",
       "telephone": "+221772947958",
-      "image": "https://ot404.com/ot404-preview.png",
+      "image": "https://ot404.com/ot404-preview.jpg",
       "logo": "https://ot404.com/assets/logo-ot404comp.png",
       "address": {
         "@type": "PostalAddress",
@@ -182,10 +182,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://www.google.com" />
+    <link rel="preload" as="image" href="assets/poster-hero.jpg" fetchpriority="high" />
+    <link rel="manifest" href="manifest.webmanifest" />
 
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#accueil">Aller au contenu</a>
     <!-- Page Loader -->
     <div class="page-loader" id="pageLoader">
       <div class="loader-content">
@@ -373,8 +376,8 @@
         />
 
         <div class="glass circuit-video reveal reveal-delay">
-          <video autoplay muted loop playsinline controls preload="metadata" poster="assets/poster-microsoudure.jpg">
-            <source src="assets/microsoudure-atelier-ot404.mp4" type="video/mp4" />
+          <video autoplay muted loop playsinline controls preload="none" poster="assets/poster-microsoudure.jpg" data-lazy-video>
+            <source data-src="assets/microsoudure-atelier-ot404.mp4" type="video/mp4" />
             Votre navigateur ne permet pas de lire cette vidéo.
           </video>
           <span class="circuit-shade"></span>
@@ -425,6 +428,38 @@
             </div>
           </div>
         </div>
+      </section>
+
+      <!-- Tarifs -->
+      <section class="pricing section" id="tarifs">
+        <div class="section-heading reveal">
+          <div class="eyebrow">Transparence</div>
+          <h2>Fourchettes<br /><span>indicatives.</span></h2>
+          <p>Les montants varient selon le modèle et la panne. Le diagnostic reste gratuit.</p>
+        </div>
+        <div class="pricing-grid">
+          <article class="glass pricing-card reveal">
+            <span class="pricing-label">Mobile</span>
+            <h3>Écran, batterie, charge</h3>
+            <p>Les pannes les plus courantes : écran fissuré, batterie en fin de vie, connecteur de charge défaillant.</p>
+            <span class="pricing-range">À partir de <strong>5 000 FCFA</strong></span>
+          </article>
+          <article class="glass pricing-card reveal reveal-delay">
+            <span class="pricing-label">Mobile</span>
+            <h3>Microsoudure carte mère</h3>
+            <p>Intervention au composant sur iPhone, Samsung et autres. Devis ferme après diagnostic.</p>
+            <span class="pricing-range">À partir de <strong>15 000 FCFA</strong></span>
+          </article>
+          <article class="glass pricing-card reveal reveal-delay-two">
+            <span class="pricing-label">Ordinateur</span>
+            <h3>PC &amp; portable</h3>
+            <p>Diagnostic, optimisation, remplacement de composants. Devis clair avant toute intervention.</p>
+            <span class="pricing-range">À partir de <strong>10 000 FCFA</strong></span>
+          </article>
+        </div>
+        <p class="pricing-disclaimer reveal">
+          Les tarifs ci-dessus sont des fourchettes indicatives. Le prix exact est communiqué après diagnostic, <strong>avant</strong> toute intervention. Aucune réparation n'est entreprise sans votre accord.
+        </p>
       </section>
 
       <section class="atelier section" id="atelier">

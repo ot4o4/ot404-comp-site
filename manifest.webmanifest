@@ -1,0 +1,27 @@
+{
+  "name": "OT404 COMP. — Microsoudure & réparation électronique",
+  "short_name": "OT404",
+  "description": "Microsoudure et réparation électronique à Dakar. Téléphones, ordinateurs et cartes électroniques.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#031016",
+  "theme_color": "#031016",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "utilities", "productivity"]
+}

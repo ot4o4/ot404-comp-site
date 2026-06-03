@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# Block internal/development paths
+Disallow: /404.html
+
 Sitemap: https://ot404.com/sitemap.xml

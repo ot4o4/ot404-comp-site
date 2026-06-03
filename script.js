@@ -45,7 +45,7 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 
 if (!prefersReducedMotion) {
   const motionSurfaces = document.querySelectorAll(
-    ".nav-shell, .service-card, .expertise-card, .trust-card, .review-invite, .contact-details > a, .testimonial-card, .faq-item, .stat-card"
+    ".nav-shell, .service-card, .expertise-card, .trust-card, .review-invite, .contact-details > a, .testimonial-card, .faq-item, .pricing-card"
   );
   const motionIcons = document.querySelectorAll(".service-icon, .mini-icon, .detail-icon");
 
@@ -81,34 +81,6 @@ const sectionObserver = new IntersectionObserver(
 sections.forEach((section) => sectionObserver.observe(section));
 
 document.querySelector("#year").textContent = new Date().getFullYear();
-
-// Stats Counter Animation
-const counterObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const counters = entry.target.querySelectorAll(".stat-number");
-      counters.forEach((counter) => {
-        const target = parseInt(counter.dataset.target);
-        const duration = 2000;
-        const start = performance.now();
-        const animate = (now) => {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          counter.textContent = Math.floor(eased * target);
-          if (progress < 1) requestAnimationFrame(animate);
-          else counter.textContent = target;
-        };
-        requestAnimationFrame(animate);
-      });
-      counterObserver.unobserve(entry.target);
-    });
-  },
-  { threshold: 0.3 }
-);
-
-const statsSection = document.getElementById("stats");
-if (statsSection) counterObserver.observe(statsSection);
 
 // Scroll to Top
 const scrollTopBtn = document.getElementById("scrollTop");
@@ -147,4 +119,40 @@ if (openStatus) {
 
   updateOpenStatus();
   setInterval(updateOpenStatus, 60 * 1000);
+}
+
+// Lazy-load videos: load source only when the video enters the viewport
+const lazyVideos = document.querySelectorAll("video[data-lazy-video]");
+if (lazyVideos.length && "IntersectionObserver" in window) {
+  const videoObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const video = entry.target;
+        const sources = video.querySelectorAll("source[data-src]");
+        sources.forEach((source) => {
+          source.src = source.dataset.src;
+        });
+        video.load();
+        videoObserver.unobserve(video);
+      });
+    },
+    { rootMargin: "200px 0px" }
+  );
+  lazyVideos.forEach((video) => videoObserver.observe(video));
+}
+
+// Floating WhatsApp button: ensure it doesn't cover content at the bottom
+const whatsappFloat = document.querySelector(".whatsapp-float");
+const footer = document.querySelector("footer");
+if (whatsappFloat && footer) {
+  const floatObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        whatsappFloat.classList.toggle("near-footer", entry.isIntersecting);
+      });
+    },
+    { threshold: 0.1 }
+  );
+  floatObserver.observe(footer);
 }
