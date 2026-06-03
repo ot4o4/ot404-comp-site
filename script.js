@@ -240,3 +240,17 @@ if (whatsappFloat && footer) {
   );
   floatObserver.observe(footer);
 }
+
+// Mobile sticky CTA: hide when the footer comes into view
+const mobileCta = document.getElementById("mobileCta");
+if (mobileCta && footer) {
+  const ctaObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        mobileCta.classList.toggle("is-hidden", entry.isIntersecting);
+      });
+    },
+    { threshold: 0.05 }
+  );
+  ctaObserver.observe(footer);
+}

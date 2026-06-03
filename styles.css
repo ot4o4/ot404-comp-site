@@ -19,7 +19,145 @@ html {
   scroll-padding-top: 90px;
 }
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  .open-status[data-state="open"] .status-dot { animation: none; }
+}
+
+/* ========== COMMITMENTS ========== */
+.commitments-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 28px;
+}
+.commitment-card {
+  padding: 22px 20px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+.commitment-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(105, 242, 219, 0.1);
+  border: 1px solid rgba(105, 242, 219, 0.18);
+  margin-bottom: 4px;
+  flex: 0 0 36px;
+}
+.commitment-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.commitment-card h3 {
+  font-size: 1rem;
+  margin: 0;
+  color: var(--text);
+  font-weight: 600;
+}
+.commitment-card p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
+@media (max-width: 980px) {
+  .commitments-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .commitments-grid { grid-template-columns: 1fr; }
+}
+
+/* ========== MOBILE CTA (sticky bottom) ========== */
+.mobile-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  background: rgba(3, 16, 22, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 8px;
+  transform: translateY(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.mobile-cta.is-hidden {
+  transform: translateY(100%);
+  pointer-events: none;
+}
+.mobile-cta-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: transform 0.15s ease, background 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.mobile-cta-btn:active {
+  transform: scale(0.97);
+}
+.mobile-cta-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 18px;
+}
+.mobile-cta-call {
+  background: var(--surface-strong);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.mobile-cta-call:active {
+  background: var(--surface);
+}
+.mobile-cta-whatsapp {
+  background: #25D366;
+  color: #fff;
+  border: 1px solid #25D366;
+  flex: 1.4;
+}
+.mobile-cta-whatsapp small {
+  font-size: 0.7rem;
+  font-weight: 500;
+  opacity: 0.85;
+  margin-left: 4px;
+}
+.mobile-cta-whatsapp:active {
+  background: #1ebe5a;
+}
+@media (max-width: 768px) {
+  .mobile-cta { display: flex; }
+  /* Pad body so footer is not covered by the sticky bar */
+  body { padding-bottom: 76px; }
+  /* Hide the floating whatsapp on mobile (the sticky bar replaces it) */
+  .whatsapp-float { display: none; }
+}
+@media (min-width: 769px) {
+  .mobile-cta { display: none !important; }
 }
 
 :root {
