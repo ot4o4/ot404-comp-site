@@ -2123,11 +2123,6 @@ footer {
   color: #fff;
   border-color: #25D366;
 }
-.social-icon.youtube:hover {
-  background: #FF0000;
-  color: #fff;
-  border-color: #FF0000;
-}
 
 /* ========== BUSINESS HOURS ========== */
 .business-hours {
@@ -2137,6 +2132,14 @@ footer {
   padding: 16px;
   border-radius: 16px;
   margin-top: 8px;
+}
+.hours-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
 }
 .hours-grid {
   display: grid;
@@ -2153,6 +2156,54 @@ footer {
 }
 .hours-grid .closed {
   color: var(--coral);
+}
+
+/* Live open/closed status pill */
+.open-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.22rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+.open-status[data-state="open"] {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+  border-color: rgba(74, 222, 128, 0.32);
+}
+.open-status[data-state="closed"] {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.08);
+  border-color: rgba(248, 113, 113, 0.28);
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: 0 0 8px;
+}
+.open-status[data-state="open"] .status-dot {
+  animation: statusPulse 2.4s ease-out infinite;
+}
+.open-status[data-state="closed"] .status-dot {
+  opacity: 0.85;
+}
+@keyframes statusPulse {
+  0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
+  70% { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .open-status[data-state="open"] .status-dot { animation: none; }
 }
 
 /* ========== SCROLL TO TOP ========== */

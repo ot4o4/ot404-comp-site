@@ -120,3 +120,31 @@ if (scrollTopBtn) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
+
+// Live open/closed status (Africa/Dakar, UTC+0, no DST)
+const openStatus = document.getElementById("openStatus");
+if (openStatus) {
+  const statusText = openStatus.querySelector(".status-text");
+
+  function updateOpenStatus() {
+    const dakarString = new Date().toLocaleString("en-US", {
+      timeZone: "Africa/Dakar",
+    });
+    const dakar = new Date(dakarString);
+    const day = dakar.getDay();
+    const minutesNow = dakar.getHours() * 60 + dakar.getMinutes();
+
+    let isOpen = false;
+    if (day === 5) {
+      isOpen = minutesNow >= 15 * 60 && minutesNow < 23 * 60;
+    } else {
+      isOpen = minutesNow >= 10 * 60 && minutesNow < 23 * 60;
+    }
+
+    openStatus.dataset.state = isOpen ? "open" : "closed";
+    statusText.textContent = isOpen ? "Ouvert maintenant" : "Fermé";
+  }
+
+  updateOpenStatus();
+  setInterval(updateOpenStatus, 60 * 1000);
+}
