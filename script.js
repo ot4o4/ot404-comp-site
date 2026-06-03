@@ -103,30 +103,102 @@ if (scrollTopBtn) {
 const openStatus = document.getElementById("openStatus");
 if (openStatus) {
   const statusText = openStatus.querySelector(".status-text");
+  const statusEta = openStatus.querySelector(".status-eta");
 
   // Schedule: day -> { open, close } in minutes from midnight
   // 0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat
   const SCHEDULE = {
-    0: { open: 10 * 60, close: 23 * 60 },
+    0: { open: 10 * 60, close: 23 * 60 }, // Dim
     1: { open: 10 * 60, close: 23 * 60 },
     2: { open: 10 * 60, close: 23 * 60 },
     3: { open: 10 * 60, close: 23 * 60 },
     4: { open: 10 * 60, close: 23 * 60 },
-    5: { open: 15 * 60, close: 23 * 60 },
-    6: { open: 10 * 60, close: 23 * 60 },
+    5: { open: 15 * 60, close: 23 * 60 }, // Ven
+    6: { open: 10 * 60, close: 23 * 60 }, // Sam
   };
+  const DAY_NAMES = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"];
 
-  function updateOpenStatus() {
+  function formatTime(minutes) {
+    const h = Math.floor(minutes / 60);
+    const m = minutes % 60;
+    return `${String(h).padStart(2, "0")}h${String(m).padStart(2, "0")}`;
+  }
+
+  function formatCountdown(totalMinutes) {
+    if (totalMinutes <= 0) return "à l'instant";
+    if (totalMinutes < 60) return `dans ${totalMinutes} min`;
+    const h = Math.floor(totalMinutes / 60);
+    const m = totalMinutes % 60;
+    if (m === 0) return `dans ${h} h`;
+    return `dans ${h} h ${String(m).padStart(2, "0")}`;
+  }
+
+  function getDakarParts() {
     const dakar = new Date(
       new Date().toLocaleString("en-US", { timeZone: "Africa/Dakar" })
     );
-    const day = dakar.getDay();
-    const minutesNow = dakar.getHours() * 60 + dakar.getMinutes();
+    return {
+      day: dakar.getDay(),
+      minutes: dakar.getHours() * 60 + dakar.getMinutes(),
+    };
+  }
+
+  let lastState = null;
+
+  function updateOpenStatus() {
+    const { day, minutes } = getDakarParts();
     const today = SCHEDULE[day];
 
-    const isOpen = minutesNow >= today.open && minutesNow < today.close;
-    openStatus.dataset.state = isOpen ? "open" : "closed";
+    let isOpen = false;
+    let etaText = "";
+
+    if (minutes >= today.open && minutes < today.close) {
+      // Currently open
+      isOpen = true;
+      const remaining = today.close - minutes;
+      if (remaining <= 120) {
+        etaText = `Ferme ${formatCountdown(remaining)}`;
+      } else {
+        etaText = `Ferme à ${formatTime(today.close)}`;
+      }
+    } else {
+      // Currently closed
+      isOpen = false;
+      if (minutes < today.open) {
+        // Opens later today
+        const wait = today.open - minutes;
+        etaText = wait <= 240
+          ? `Ouvre ${formatCountdown(wait)}`
+          : `Ouvre à ${formatTime(today.open)}`;
+      } else {
+        // Opens next open day
+        for (let offset = 1; offset <= 7; offset++) {
+          const nextDay = (day + offset) % 7;
+          const next = SCHEDULE[nextDay];
+          if (next.open < next.close) {
+            const dayLabel = offset === 1 ? "demain" : DAY_NAMES[nextDay];
+            etaText = `Ouvre ${dayLabel} ${formatTime(next.open)}`;
+            break;
+          }
+        }
+      }
+    }
+
+    const newState = isOpen ? "open" : "closed";
+    if (lastState !== null && lastState !== newState) {
+      openStatus.classList.add("is-changing");
+      setTimeout(() => openStatus.classList.remove("is-changing"), 500);
+    }
+    lastState = newState;
+
+    openStatus.dataset.state = newState;
     statusText.textContent = isOpen ? "Ouvert" : "Fermé";
+    statusEta.textContent = etaText;
+    openStatus.setAttribute("aria-label",
+      isOpen
+        ? `Ouvert maintenant. ${etaText}.`
+        : `Fermé. ${etaText}.`
+    );
   }
 
   updateOpenStatus();
