@@ -2276,48 +2276,202 @@ footer {
 .open-status {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.22rem 0.65rem;
+  gap: 0.55rem;
+  padding: 0.42rem 0.75rem 0.42rem 0.55rem;
   border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  line-height: 1;
+  font-size: 0.78rem;
+  font-weight: 500;
+  position: relative;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--muted);
-  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  transition: background 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  isolation: isolate;
+  overflow: hidden;
+}
+.open-status::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.05) 40%,
+    transparent 60%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  -webkit-mask: linear-gradient(#000, #000) content-box, linear-gradient(#000, #000);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+  transition: background 0.5s;
 }
 .open-status[data-state="open"] {
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.16) 0%, rgba(74, 222, 128, 0.04) 100%);
+  border-color: rgba(74, 222, 128, 0.4);
   color: #4ade80;
-  background: rgba(74, 222, 128, 0.1);
-  border-color: rgba(74, 222, 128, 0.32);
+  box-shadow:
+    0 0 0 1px rgba(74, 222, 128, 0.08) inset,
+    0 4px 18px -6px rgba(74, 222, 128, 0.45),
+    0 0 32px -10px rgba(74, 222, 128, 0.3);
+}
+.open-status[data-state="open"]::before {
+  background: linear-gradient(
+    135deg,
+    rgba(74, 222, 128, 0.7) 0%,
+    rgba(74, 222, 128, 0.1) 40%,
+    transparent 60%,
+    rgba(74, 222, 128, 0.4) 100%
+  );
 }
 .open-status[data-state="closed"] {
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.13) 0%, rgba(248, 113, 113, 0.03) 100%);
+  border-color: rgba(248, 113, 113, 0.35);
   color: #f87171;
-  background: rgba(248, 113, 113, 0.08);
-  border-color: rgba(248, 113, 113, 0.28);
+  box-shadow:
+    0 0 0 1px rgba(248, 113, 113, 0.08) inset,
+    0 4px 18px -6px rgba(248, 113, 113, 0.35);
 }
-.status-dot {
-  width: 8px;
-  height: 8px;
+.open-status[data-state="closed"]::before {
+  background: linear-gradient(
+    135deg,
+    rgba(248, 113, 113, 0.55) 0%,
+    rgba(248, 113, 113, 0.1) 40%,
+    transparent 60%,
+    rgba(248, 113, 113, 0.3) 100%
+  );
+}
+.open-status:hover {
+  transform: translateY(-1px);
+}
+
+/* Status icon (sun / moon swap) */
+.status-icon {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 18px;
+}
+.status-icon svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.open-status[data-state="open"] .icon-sun {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+.open-status[data-state="open"] .icon-moon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+.open-status[data-state="closed"] .icon-sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+.open-status[data-state="closed"] .icon-moon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+/* Status text content */
+.status-content {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  text-align: left;
+}
+.status-text {
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+}
+.status-eta {
+  font-size: 0.65rem;
+  font-weight: 500;
+  opacity: 0.7;
+  margin-top: 2px;
+  letter-spacing: 0.01em;
+}
+.status-eta:empty {
+  display: none;
+}
+
+/* Status pulse dot (right side) */
+.status-pulse {
+  position: relative;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: currentColor;
-  flex: 0 0 8px;
+  flex: 0 0 7px;
+  box-shadow: 0 0 8px currentColor;
 }
-.open-status[data-state="open"] .status-dot {
-  animation: statusPulse 2.4s ease-out infinite;
+.open-status[data-state="open"] .status-pulse::before {
+  content: "";
+  position: absolute;
+  inset: 50% 50% 50% 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: currentColor;
+  animation: statusRing 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  transform: translate(-50%, -50%);
 }
-.open-status[data-state="closed"] .status-dot {
-  opacity: 0.85;
+.open-status[data-state="closed"] .status-pulse {
+  opacity: 0.6;
+  box-shadow: none;
 }
-@keyframes statusPulse {
-  0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.5); }
-  70% { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+
+@keyframes statusRing {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
 }
+
+/* Subtle entrance animation on load */
+.open-status {
+  animation: statusEnter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+}
+@keyframes statusEnter {
+  0% { opacity: 0; transform: translateY(4px) scale(0.92); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* State-change flash */
+.open-status.is-changing {
+  animation: statusFlash 0.5s ease;
+}
+@keyframes statusFlash {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .open-status[data-state="open"] .status-dot { animation: none; }
+  .open-status,
+  .open-status::before,
+  .status-icon svg,
+  .open-status .status-pulse::before {
+    animation: none !important;
+    transition: none !important;
+  }
+  .open-status:hover { transform: none; }
 }
 
 /* ========== SCROLL TO TOP ========== */

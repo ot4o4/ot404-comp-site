@@ -703,10 +703,17 @@
               <div>
                 <div class="hours-head">
                   <small>Horaires d'ouverture</small>
-                  <span class="open-status" id="openStatus" data-state="closed" aria-live="polite">
-                    <span class="status-dot" aria-hidden="true"></span>
-                    <span class="status-text">Vérification...</span>
-                  </span>
+                  <div class="open-status" id="openStatus" data-state="closed" aria-live="polite" aria-atomic="true">
+                    <span class="status-icon" aria-hidden="true">
+                      <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+                      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </span>
+                    <span class="status-content">
+                      <span class="status-text">Vérification…</span>
+                      <span class="status-eta"></span>
+                    </span>
+                    <span class="status-pulse" aria-hidden="true"></span>
+                  </div>
                 </div>
                 <div class="hours-grid">
                   <span>Lun – Jeu</span><strong>10h00 – 23h00</strong>
