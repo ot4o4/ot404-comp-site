@@ -2241,7 +2241,7 @@ footer {
 /* ========== BUSINESS HOURS ========== */
 .business-hours {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 16px;
   padding: 16px;
   border-radius: 16px;
