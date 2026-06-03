@@ -17,6 +17,11 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
     <meta name="theme-color" content="#031016" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="OT404" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -80,10 +85,14 @@
         }
       ],
       "priceRange": "FCFA",
+      "currenciesAccepted": "XOF",
+      "paymentAccepted": "Cash, Mobile Money, Wave, Orange Money",
       "areaServed": {
         "@type": "City",
         "name": "Dakar"
       },
+      "serviceType": "ElectronicsRepairService",
+      "availableLanguage": ["fr"],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Services de réparation",
@@ -93,15 +102,14 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Réparation mobile",
-              "description": "Écran, connecteur, batterie, charge, caméra — iPhone, Android, tablettes"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Réparation ordinateurs",
-              "description": "Diagnostic, optimisation et réparation matérielle pour PC et portables"
+              "description": "Écran, connecteur, batterie, charge, caméra — iPhone, Android, tablettes",
+              "serviceType": "Mobile Phone Repair"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "XOF",
+              "minPrice": 5000,
+              "description": "Fourchette indicative à partir de 5 000 FCFA"
             }
           },
           {
@@ -109,21 +117,58 @@
             "itemOffered": {
               "@type": "Service",
               "name": "Microsoudure",
-              "description": "Intervention sur cartes mères et composants électroniques de petite taille"
+              "description": "Intervention sur cartes mères et composants électroniques de petite taille",
+              "serviceType": "Micro Soldering"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "XOF",
+              "minPrice": 15000,
+              "description": "Fourchette indicative à partir de 15 000 FCFA"
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Réparation électronique",
-              "description": "Prise en charge de divers appareils électroniques"
+              "name": "Réparation ordinateurs",
+              "description": "Diagnostic, optimisation et réparation matérielle pour PC et portables",
+              "serviceType": "Computer Repair"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "XOF",
+              "minPrice": 10000,
+              "description": "Fourchette indicative à partir de 10 000 FCFA"
             }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Diagnostic",
+              "description": "Analyse complète de votre appareil avec devis clair",
+              "serviceType": "Diagnostic"
+            },
+            "price": 0,
+            "priceCurrency": "XOF"
           }
         ]
       },
+      "warranty": {
+        "@type": "WarrantyPromise",
+        "durationOfWarranty": {
+          "@type": "QuantitativeValue",
+          "unitCode": "DAY",
+          "value": 30
+        },
+        "warrantyScope": "Pièces et main-d'œuvre"
+      },
       "sameAs": [
-        "https://wa.me/221772947958"
+        "https://wa.me/221772947958",
+        "https://www.facebook.com/OTcomp",
+        "https://www.instagram.com/otcompext/",
+        "https://www.tiktok.com/@otcomp.a"
       ]
     }
     </script>
@@ -178,12 +223,31 @@
     }
     </script>
 
+    <!-- Video Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "Microsoudure en atelier — OT404 COMP.",
+      "description": "Démonstration d'une intervention de microsoudure sur carte mère en atelier à Dakar.",
+      "thumbnailUrl": "https://ot404.com/assets/poster-microsoudure.jpg",
+      "contentUrl": "https://ot404.com/assets/microsoudure-atelier-ot404.mp4",
+      "embedUrl": "https://ot404.com/#atelier-video",
+      "uploadDate": "2025-01-01",
+      "duration": "PT30S",
+      "inLanguage": "fr",
+      "isPartOf": {
+        "@type": "WebPage",
+        "url": "https://ot404.com/"
+      }
+    }
+    </script>
+
     <!-- Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://www.google.com" />
     <link rel="preconnect" href="https://maps.googleapis.com" />
     <link rel="preconnect" href="https://maps.gstatic.com" />
+    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/dm-sans-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/space-grotesk-latin.woff2" crossorigin />
     <link rel="preload" as="image" href="assets/poster-hero.jpg" fetchpriority="high" />
     <link rel="manifest" href="manifest.webmanifest" />
 

@@ -5,6 +5,12 @@ window.addEventListener('load', () => {
     setTimeout(() => loader.classList.add('loaded'), 800);
     setTimeout(() => loader.remove(), 1500);
   }
+  // Register Service Worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(() => {
+      // Silent failure: SW is progressive enhancement
+    });
+  }
 });
 
 const menuToggle = document.querySelector(".menu-toggle");
