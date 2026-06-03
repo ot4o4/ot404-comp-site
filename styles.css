@@ -2276,10 +2276,10 @@ footer {
 .open-status {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.42rem 0.75rem 0.42rem 0.55rem;
+  gap: 0.42rem;
+  padding: 0.28rem 0.6rem 0.28rem 0.45rem;
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 500;
   position: relative;
   background: rgba(255, 255, 255, 0.04);
@@ -2318,8 +2318,8 @@ footer {
   color: #4ade80;
   box-shadow:
     0 0 0 1px rgba(74, 222, 128, 0.08) inset,
-    0 4px 18px -6px rgba(74, 222, 128, 0.45),
-    0 0 32px -10px rgba(74, 222, 128, 0.3);
+    0 3px 12px -5px rgba(74, 222, 128, 0.4),
+    0 0 24px -10px rgba(74, 222, 128, 0.25);
 }
 .open-status[data-state="open"]::before {
   background: linear-gradient(
@@ -2336,7 +2336,7 @@ footer {
   color: #f87171;
   box-shadow:
     0 0 0 1px rgba(248, 113, 113, 0.08) inset,
-    0 4px 18px -6px rgba(248, 113, 113, 0.35);
+    0 3px 12px -5px rgba(248, 113, 113, 0.3);
 }
 .open-status[data-state="closed"]::before {
   background: linear-gradient(
@@ -2354,12 +2354,12 @@ footer {
 /* Status icon (sun / moon swap) */
 .status-icon {
   position: relative;
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 18px;
+  flex: 0 0 14px;
 }
 .status-icon svg {
   position: absolute;
@@ -2394,19 +2394,19 @@ footer {
 .status-content {
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
+  line-height: 1.05;
   text-align: left;
 }
 .status-text {
   font-weight: 700;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   letter-spacing: 0.01em;
 }
 .status-eta {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 500;
-  opacity: 0.7;
-  margin-top: 2px;
+  opacity: 0.65;
+  margin-top: 1px;
   letter-spacing: 0.01em;
 }
 .status-eta:empty {
@@ -2416,12 +2416,12 @@ footer {
 /* Status pulse dot (right side) */
 .status-pulse {
   position: relative;
-  width: 7px;
-  height: 7px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: currentColor;
-  flex: 0 0 7px;
-  box-shadow: 0 0 8px currentColor;
+  flex: 0 0 5px;
+  box-shadow: 0 0 6px currentColor;
 }
 .open-status[data-state="open"] .status-pulse::before {
   content: "";
