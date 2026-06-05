@@ -2665,7 +2665,7 @@ footer {
 }
 
 .px-input::placeholder {
-  color: rgba(214, 234, 240, 0.38);
+  color: rgba(214, 234, 240, 0.55);
   font-weight: 400;
 }
 
