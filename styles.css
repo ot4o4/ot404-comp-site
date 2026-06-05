@@ -2545,33 +2545,34 @@ footer {
 .px-shell {
   position: relative;
   isolation: isolate;
-  width: min(920px, calc(100% - 40px));
-  margin: 36px auto 0;
+  width: min(880px, calc(100% - 40px));
+  margin: 38px auto 0;
   padding: 0;
-  border-radius: 28px;
-  background: linear-gradient(180deg, rgba(7, 18, 24, 0.78) 0%, rgba(4, 12, 16, 0.92) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 26px;
+  background:
+    linear-gradient(180deg, rgba(10, 23, 30, 0.72) 0%, rgba(4, 11, 15, 0.9) 100%);
+  border: 1px solid rgba(150, 200, 210, 0.1);
   box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(255, 255, 255, 0.02);
-  transition: box-shadow 280ms ease, border-color 280ms ease;
+    0 40px 90px -30px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: box-shadow 320ms ease, border-color 320ms ease, transform 320ms ease;
 }
 
-/* Border halo: orange à gauche → bleu à droite */
+/* Border halo: orange à gauche → bleu à droite (vif, façon référence) */
 .px-shell::before {
   content: "";
   position: absolute;
-  inset: -1px;
+  inset: 0;
   z-index: 0;
   border-radius: inherit;
-  padding: 1px;
+  padding: 1.5px;
   background: linear-gradient(
-    90deg,
-    rgba(255, 122, 105, 0.95) 0%,
-    rgba(255, 122, 105, 0.55) 12%,
-    rgba(190, 130, 230, 0.35) 50%,
-    rgba(110, 160, 255, 0.55) 88%,
-    rgba(81, 167, 255, 0.95) 100%
+    100deg,
+    rgba(255, 110, 92, 1) 0%,
+    rgba(255, 130, 110, 0.7) 16%,
+    rgba(180, 140, 235, 0.28) 50%,
+    rgba(120, 170, 255, 0.7) 84%,
+    rgba(70, 160, 255, 1) 100%
   );
   -webkit-mask:
     linear-gradient(#000 0 0) content-box,
@@ -2579,35 +2580,47 @@ footer {
   -webkit-mask-composite: xor;
           mask-composite: exclude;
   pointer-events: none;
-  opacity: 0.85;
+  opacity: 0.9;
+  transition: opacity 320ms ease;
 }
 
 .px-shell:focus-within {
+  border-color: rgba(170, 215, 225, 0.16);
   box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
+    0 44px 100px -28px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
 }
 
-/* Aura à gauche (orange) et à droite (bleu) */
+.px-shell:focus-within::before {
+  opacity: 1;
+}
+
+/* Aura : lueur externe diffuse autour de la barre (orange gauche, bleu droite) */
 .px-aura {
   position: absolute;
-  top: -30%;
-  bottom: -30%;
-  width: 38%;
+  top: -55%;
+  bottom: -55%;
+  width: 46%;
   pointer-events: none;
   z-index: -1;
-  filter: blur(38px);
-  opacity: 0.55;
+  filter: blur(52px);
+  opacity: 0.6;
+  transition: opacity 320ms ease;
 }
 
 .px-aura-left {
-  left: -10%;
-  background: radial-gradient(circle at center, rgba(255, 105, 100, 0.55), transparent 70%);
+  left: -14%;
+  background: radial-gradient(circle at 60% 50%, rgba(255, 96, 78, 0.62), transparent 68%);
 }
 
 .px-aura-right {
-  right: -10%;
-  background: radial-gradient(circle at center, rgba(81, 167, 255, 0.55), transparent 70%);
+  right: -14%;
+  background: radial-gradient(circle at 40% 50%, rgba(64, 156, 255, 0.62), transparent 68%);
+}
+
+.px-shell:focus-within ~ .px-aura,
+.px-shell:focus-within .px-aura {
+  opacity: 0.8;
 }
 
 /* Fond "matrix" — texte façon référence image, très subtil */
@@ -2616,7 +2629,7 @@ footer {
   inset: 0;
   border-radius: inherit;
   overflow: hidden;
-  opacity: 0.22;
+  opacity: 0.14;
   mix-blend-mode: screen;
   pointer-events: none;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 520' fill='%2364f8d4' font-family='ui-monospace,monospace' font-size='11' font-weight='500' letter-spacing='2'><text x='20' y='22' opacity='0.45'>VS S  L K H D Q V .  @ X &amp; R  + B  +</text><text x='110' y='44' opacity='0.6'>P + K . T u  Q C Q N + Z   C + N   Q U T L</text><text x='30' y='66' opacity='0.4'>π Q   N C T  + U N Q  .  1  0  Q  Z  W</text><text x='250' y='88' opacity='0.55'>Y B   B 0   1</text><text x='500' y='22' opacity='0.4'>+ G   V   N I M 0 E P T R Q G H J C V Z 1 0</text><text x='720' y='46' opacity='0.55'>π Q N C T + U N Q  .  1  0  Q  Z W</text><text x='840' y='70' opacity='0.4'>V S  S  L K H D Q V .  @ X &amp; R + B +</text><text x='60' y='108' opacity='0.5'>T u  Q C Q N + Z   C + N   Q U T L</text><text x='320' y='130' opacity='0.4'>π Q N C T  + U N Q  .  1  0</text><text x='600' y='108' opacity='0.55'>Y B B 0   1</text><text x='900' y='130' opacity='0.45'>P + K . T u  Q C Q N</text><text x='40' y='158' opacity='0.5'>+ G   V   N I M 0 E P T R Q</text><text x='380' y='180' opacity='0.4'>V S  S  L K H D Q V</text><text x='680' y='160' opacity='0.55'>T u  Q C Q N + Z   C + N</text><text x='180' y='200' opacity='0.4'>Y B B 0   1   π Q N C T</text><text x='820' y='200' opacity='0.5'>+ G V N I M 0 E P T R Q G H J</text><text x='20' y='232' opacity='0.55'>π Q N C T  + U N Q  .  1  0  Q  Z  W</text><text x='430' y='252' opacity='0.4'>P + K . T u  Q C Q N + Z</text><text x='760' y='234' opacity='0.5'>V S S L K H D Q V . @ X &amp; R + B</text><text x='110' y='280' opacity='0.45'>+ G V N I M 0 E P T R Q G H J C V Z</text><text x='540' y='300' opacity='0.55'>Y B B 0 1   π Q N C T</text><text x='900' y='280' opacity='0.4'>T u  Q C Q N + Z   C + N Q U T L</text><text x='30' y='328' opacity='0.5'>VS S  L K H D Q V .  @ X &amp; R + B +</text><text x='370' y='348' opacity='0.45'>π Q N C T  + U N Q</text><text x='720' y='328' opacity='0.55'>P + K . T u  Q C Q N + Z</text><text x='60' y='376' opacity='0.4'>Y B B 0 1   π Q N C T + U N Q</text><text x='420' y='398' opacity='0.5'>+ G V N I M 0 E P T R Q G H J C V Z 1 0</text><text x='800' y='376' opacity='0.45'>V S S  L K H D Q V . @ X &amp; R + B</text><text x='180' y='424' opacity='0.55'>T u  Q C Q N + Z   C + N Q U T L</text><text x='620' y='446' opacity='0.4'>Y B B 0 1   π Q N C T + U N Q</text><text x='30' y='472' opacity='0.5'>π Q N C T  + U N Q  .  1  0  Q  Z W</text><text x='500' y='494' opacity='0.45'>+ G V N I M 0 E P T R Q G H J C V Z 1 0</text><text x='880' y='472' opacity='0.4'>V S S  L K H D Q V . @ X &amp; R + B +</text></svg>");
@@ -2629,8 +2642,8 @@ footer {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 22px 22px 18px;
+  gap: 16px;
+  padding: 26px 26px 20px;
 }
 
 .px-field {
@@ -2644,20 +2657,20 @@ footer {
   border: 0;
   outline: none;
   color: var(--text);
-  font: 500 1.02rem/1.55 var(--font-body);
+  font: 400 1.08rem/1.6 var(--font-body);
   letter-spacing: 0.005em;
-  min-height: 70px;
-  max-height: 220px;
-  padding: 4px 2px;
+  min-height: 76px;
+  max-height: 240px;
+  padding: 6px 4px 2px;
 }
 
 .px-input::placeholder {
-  color: rgba(220, 240, 245, 0.42);
+  color: rgba(214, 234, 240, 0.38);
   font-weight: 400;
 }
 
 .px-input:focus::placeholder {
-  color: rgba(220, 240, 245, 0.25);
+  color: rgba(214, 234, 240, 0.22);
 }
 
 /* Prévisualisation des fichiers joints */
@@ -2759,19 +2772,19 @@ footer {
 .px-toolbar {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 9px;
   flex-wrap: wrap;
 }
 
 .px-btn {
   display: inline-grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   flex: none;
-  border-radius: 13px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+  border: 1px solid rgba(180, 220, 228, 0.14);
+  background: rgba(255, 255, 255, 0.035);
   color: var(--muted);
   cursor: pointer;
   transition: background 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
@@ -2779,27 +2792,27 @@ footer {
 
 .px-btn:hover {
   background: rgba(255, 255, 255, 0.08);
-  color: var(--text);
-  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--accent-soft);
+  border-color: rgba(120, 248, 212, 0.32);
 }
 
 .px-btn:active {
-  transform: scale(0.96);
+  transform: scale(0.94);
 }
 
 .px-btn svg {
-  width: 18px;
-  height: 18px;
+  width: 19px;
+  height: 19px;
   stroke: currentColor;
   fill: none;
-  stroke-width: 1.8;
+  stroke-width: 1.9;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
 .px-pills {
   display: flex;
-  gap: 8px;
+  gap: 9px;
   flex: 1 1 auto;
   flex-wrap: wrap;
   min-width: 0;
@@ -2810,13 +2823,14 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 0 10px 0 12px;
-  height: 40px;
-  border-radius: 13px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.04);
+  padding: 0 12px 0 14px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid rgba(180, 220, 228, 0.14);
+  background: rgba(255, 255, 255, 0.035);
   color: var(--text);
-  font-size: 0.86rem;
+  font-size: 0.88rem;
+  font-weight: 500;
   cursor: pointer;
   user-select: none;
   transition: background 180ms ease, border-color 180ms ease;
@@ -2824,12 +2838,12 @@ footer {
 
 .px-pill:hover {
   background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(180, 220, 228, 0.26);
 }
 
 .px-pill.open {
-  border-color: rgba(100, 248, 212, 0.32);
-  background: rgba(100, 248, 212, 0.06);
+  border-color: rgba(100, 248, 212, 0.4);
+  background: rgba(100, 248, 212, 0.07);
 }
 
 .px-pill-icon {
@@ -2840,19 +2854,19 @@ footer {
   stroke-width: 1.6;
   stroke-linecap: round;
   stroke-linejoin: round;
-  opacity: 0.75;
+  opacity: 0.7;
   flex: none;
 }
 
 .px-pill-caret {
-  width: 12px;
-  height: 12px;
+  width: 13px;
+  height: 13px;
   stroke: currentColor;
   fill: none;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  opacity: 0.55;
+  opacity: 0.5;
   flex: none;
   margin-left: 1px;
   transition: transform 180ms ease;
@@ -2864,16 +2878,16 @@ footer {
 
 .px-pill-menu {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 9px);
   left: 0;
-  min-width: 200px;
-  padding: 6px;
+  min-width: 210px;
+  padding: 7px;
   display: none;
   flex-direction: column;
-  border-radius: 14px;
-  background: linear-gradient(180deg, rgba(15, 28, 35, 0.97), rgba(8, 18, 24, 0.97));
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(17, 31, 38, 0.98), rgba(8, 18, 24, 0.98));
+  border: 1px solid rgba(180, 220, 228, 0.14);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55);
   z-index: 6;
 }
 
@@ -2886,13 +2900,13 @@ footer {
   align-items: center;
   gap: 10px;
   width: 100%;
-  padding: 9px 11px;
+  padding: 10px 12px;
   border: 0;
   background: transparent;
   color: var(--text);
-  font: 500 0.88rem var(--font-body);
+  font: 500 0.9rem var(--font-body);
   text-align: left;
-  border-radius: 9px;
+  border-radius: 11px;
   cursor: pointer;
   transition: background 160ms ease, color 160ms ease;
 }
@@ -2918,7 +2932,7 @@ footer {
 .px-right {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 11px;
   margin-left: auto;
   flex: none;
 }
@@ -2935,19 +2949,19 @@ footer {
   position: relative;
   display: inline-grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   flex: none;
   border: 0;
   border-radius: 50%;
   cursor: pointer;
-  background: linear-gradient(135deg, #8b6dff 0%, #c44bff 38%, #ff6a8b 72%, #ff8a3a 100%);
+  background: linear-gradient(135deg, #7b5cff 0%, #b13dff 36%, #ff5c86 70%, #ff8a2e 100%);
   box-shadow:
-    0 8px 22px rgba(196, 75, 255, 0.42),
-    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
-    0 0 24px rgba(255, 138, 58, 0.25);
+    0 10px 26px -4px rgba(177, 61, 255, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 0 30px -6px rgba(255, 138, 46, 0.5);
   color: #fff;
-  transition: transform 200ms ease, box-shadow 200ms ease, filter 200ms ease;
+  transition: transform 220ms cubic-bezier(.2,.7,.3,1), box-shadow 220ms ease, filter 220ms ease;
 }
 
 .px-send::after {
@@ -2955,15 +2969,15 @@ footer {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 55%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), transparent 55%);
   pointer-events: none;
 }
 
 .px-send:hover {
-  transform: translateY(-1px) scale(1.05);
+  transform: translateY(-2px) scale(1.06);
   box-shadow:
-    0 10px 28px rgba(196, 75, 255, 0.55),
-    0 0 0 1px rgba(255, 255, 255, 0.14) inset,
+    0 14px 34px -4px rgba(177, 61, 255, 0.62),
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset,
     0 0 32px rgba(255, 138, 58, 0.35);
 }
 
