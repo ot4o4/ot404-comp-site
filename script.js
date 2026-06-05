@@ -433,7 +433,7 @@ if (whatsappFloat && footer) {
   // Empêche la page d'ouvrir un fichier si on loupe la cible
   ["dragover", "drop"].forEach((evt) => {
     window.addEventListener(evt, (e) => {
-      if (!e.target.closest(".px-shell")) e.preventDefault();
+      if (!e.target.closest(".px-bar-wrap")) e.preventDefault();
     });
   });
 
@@ -586,7 +586,7 @@ if (whatsappFloat && footer) {
   // Auto-grow du textarea
   problemText.addEventListener("input", () => {
     problemText.style.height = "auto";
-    const newHeight = Math.min(problemText.scrollHeight, 220);
+    const newHeight = Math.min(problemText.scrollHeight, 140);
     problemText.style.height = newHeight + "px";
   });
 })();
