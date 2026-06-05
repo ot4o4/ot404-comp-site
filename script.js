@@ -548,7 +548,7 @@ if (whatsappFloat && footer) {
     if (!text && attachedFiles.length === 0) {
       problemText.focus();
       setHint(
-        "Décrivez votre panne ou ajoutez au moins une photo pour continuer.",
+        "Expliquez votre panne ou ajoutez au moins une photo pour continuer.",
         "is-error"
       );
       return;

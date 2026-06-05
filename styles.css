@@ -2517,7 +2517,7 @@ footer {
 }
 
 /* =========================================================
-   Formulaire "AI bar" — Décrivez votre panne (WhatsApp)
+   Formulaire diagnostic - Décrivez votre panne (WhatsApp)
    ========================================================= */
 .px-sr-only {
   position: absolute;
@@ -3085,3 +3085,377 @@ footer {
   }
 }
 
+/* OT404 diagnostic form refresh */
+.repair-form {
+  padding: 104px 0 112px;
+  position: relative;
+}
+
+.repair-form::before {
+  position: absolute;
+  inset: 8% 50% 16% auto;
+  z-index: -1;
+  width: min(38rem, 70vw);
+  content: "";
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 60% 40%, rgba(100, 248, 212, 0.16), transparent 58%),
+    radial-gradient(circle at 76% 72%, rgba(255, 106, 101, 0.11), transparent 46%);
+  filter: blur(32px);
+  opacity: 0.9;
+  pointer-events: none;
+  transform: translateX(50%);
+}
+
+.repair-form .section-heading {
+  align-items: flex-end;
+}
+
+.repair-form .section-heading p {
+  max-width: 420px;
+  margin: 0 0 7px;
+  text-align: left;
+}
+
+.px-shell {
+  width: min(960px, 100%);
+  margin: 38px auto 0;
+  padding: 22px;
+  overflow: visible;
+  border-color: rgba(220, 255, 252, 0.17);
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(100, 248, 212, 0.13), transparent 19rem),
+    radial-gradient(circle at 100% 26%, rgba(255, 106, 101, 0.12), transparent 18rem),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.026) 58%),
+    rgba(4, 17, 24, 0.74);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 30px 86px rgba(0, 0, 0, 0.3),
+    0 0 70px rgba(100, 248, 212, 0.06);
+}
+
+.px-shell::before {
+  inset: 0;
+  padding: 1px;
+  background: linear-gradient(
+    120deg,
+    rgba(100, 248, 212, 0.58),
+    rgba(131, 184, 255, 0.24) 42%,
+    rgba(255, 140, 131, 0.46) 76%,
+    rgba(255, 83, 105, 0.5)
+  );
+  opacity: 0.7;
+}
+
+.px-shell:focus-within {
+  border-color: rgba(100, 248, 212, 0.33);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 34px 94px rgba(0, 0, 0, 0.36),
+    0 0 0 1px rgba(100, 248, 212, 0.08),
+    0 0 78px rgba(100, 248, 212, 0.11);
+}
+
+.px-aura {
+  top: 10%;
+  bottom: auto;
+  width: 16rem;
+  height: 16rem;
+  filter: blur(58px);
+  opacity: 0.35;
+}
+
+.px-aura-left {
+  left: -5rem;
+  background: rgba(100, 248, 212, 0.22);
+}
+
+.px-aura-right {
+  right: -4rem;
+  background: rgba(255, 106, 101, 0.18);
+}
+
+.px-matrix {
+  opacity: 0.28;
+  background:
+    linear-gradient(rgba(100, 248, 212, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 248, 212, 0.045) 1px, transparent 1px),
+    radial-gradient(circle at 18% 24%, rgba(100, 248, 212, 0.2) 0 2px, transparent 3px),
+    radial-gradient(circle at 82% 18%, rgba(255, 106, 101, 0.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 64% 78%, rgba(131, 184, 255, 0.15) 0 2px, transparent 3px);
+  background-size: 72px 72px, 72px 72px, 100% 100%, 100% 100%, 100% 100%;
+  mix-blend-mode: screen;
+}
+
+.px-panel-head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  margin-bottom: 18px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  color: #d9f6f2;
+}
+
+.px-panel-head span,
+.px-panel-head strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.px-panel-head span {
+  color: var(--accent);
+}
+
+.px-panel-head i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px var(--accent);
+}
+
+.px-panel-head strong {
+  padding: 8px 11px;
+  border: 1px solid rgba(220, 255, 252, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.045);
+  color: #b6fff0;
+}
+
+.px-form {
+  overflow: visible;
+  gap: 18px;
+  padding: 0;
+}
+
+.px-field {
+  position: relative;
+}
+
+.px-input {
+  min-height: 146px;
+  padding: 20px 22px;
+  border: 1px solid rgba(220, 255, 252, 0.14);
+  border-radius: 22px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.018)),
+    rgba(2, 13, 19, 0.52);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  color: #f4fffd;
+  font-size: 1rem;
+  line-height: 1.75;
+  transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+}
+
+.px-input:focus {
+  border-color: rgba(100, 248, 212, 0.42);
+  background:
+    linear-gradient(145deg, rgba(100, 248, 212, 0.06), rgba(255, 106, 101, 0.025)),
+    rgba(2, 13, 19, 0.62);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 0 4px rgba(100, 248, 212, 0.055);
+}
+
+.px-input::placeholder {
+  color: rgba(214, 234, 240, 0.5);
+}
+
+.px-files {
+  padding: 0;
+}
+
+.px-chip {
+  padding: 6px 9px 6px 6px;
+  border-color: rgba(220, 255, 252, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.px-toolbar {
+  overflow: visible;
+  padding-top: 2px;
+  gap: 10px;
+}
+
+.px-btn,
+.px-pill {
+  border-color: rgba(220, 255, 252, 0.14);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.022)),
+    rgba(6, 22, 30, 0.62);
+  color: #d7efee;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.px-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 15px;
+}
+
+.px-btn:hover,
+.px-pill:hover,
+.px-pill.open {
+  border-color: rgba(100, 248, 212, 0.34);
+  background:
+    linear-gradient(145deg, rgba(100, 248, 212, 0.1), rgba(255, 106, 101, 0.035)),
+    rgba(8, 28, 36, 0.7);
+  color: #f4fffd;
+}
+
+.px-pill {
+  overflow: visible;
+  height: 46px;
+  padding: 0 14px;
+  border-radius: 15px;
+  font-weight: 700;
+}
+
+.px-pills {
+  overflow: visible;
+}
+
+.px-pill-menu {
+  border-color: rgba(220, 255, 252, 0.16);
+  background:
+    linear-gradient(145deg, rgba(18, 42, 49, 0.98), rgba(6, 16, 22, 0.98));
+  box-shadow: 0 22px 58px rgba(0, 0, 0, 0.58);
+  z-index: 30;
+}
+
+.px-right {
+  gap: 12px;
+}
+
+.px-send {
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(255, 212, 203, 0.46);
+  border-radius: 17px;
+  background: var(--iridescent);
+  box-shadow:
+    0 16px 36px rgba(255, 98, 103, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.16) inset;
+  color: #06161b;
+}
+
+.px-send:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 20px 48px rgba(255, 98, 103, 0.28),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.px-send svg {
+  width: 19px;
+  height: 19px;
+}
+
+.px-files-count {
+  color: #a8c0c4;
+  font-size: 0.76rem;
+}
+
+.px-shell.is-drag {
+  border-color: rgba(100, 248, 212, 0.46);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 34px 94px rgba(0, 0, 0, 0.34),
+    0 0 0 6px rgba(100, 248, 212, 0.06);
+}
+
+.px-hint {
+  width: min(960px, 100%);
+  margin: 18px auto 0;
+  padding: 14px 18px;
+  border: 1px solid rgba(220, 255, 252, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #9eb8b9;
+  text-align: left;
+  backdrop-filter: blur(18px);
+}
+
+.px-hint-sep {
+  color: var(--accent);
+  opacity: 0.75;
+}
+
+.px-hint.is-error {
+  border-color: rgba(255, 154, 154, 0.26);
+  background: rgba(255, 95, 105, 0.07);
+}
+
+.px-hint.is-success {
+  border-color: rgba(100, 248, 212, 0.24);
+  background: rgba(100, 248, 212, 0.06);
+}
+
+@media (max-width: 760px) {
+  .repair-form {
+    padding: 74px 0 88px;
+  }
+
+  .repair-form .section-heading {
+    align-items: flex-start;
+  }
+
+  .repair-form .section-heading p {
+    max-width: none;
+    margin-top: 14px;
+  }
+
+  .px-shell {
+    padding: 16px;
+    border-radius: 24px;
+  }
+
+  .px-panel-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .px-input {
+    min-height: 154px;
+    padding: 18px;
+    border-radius: 19px;
+  }
+
+  .px-toolbar {
+    align-items: stretch;
+  }
+
+  .px-pills {
+    width: calc(100% - 56px);
+  }
+
+  .px-pill {
+    flex: 1 1 min(100%, 142px);
+    justify-content: center;
+  }
+
+  .px-right {
+    width: auto;
+    justify-content: flex-end;
+    margin-left: auto;
+  }
+
+  .px-send {
+    width: 48px;
+    height: 48px;
+  }
+
+  .px-hint {
+    border-radius: 16px;
+    font-size: 0.78rem;
+  }
+}

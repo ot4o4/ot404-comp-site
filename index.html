@@ -628,17 +628,22 @@
         </div>
       </section>
 
-      <!-- Devis / Panne : formulaire style "AI bar" envoyant sur WhatsApp -->
+      <!-- Devis / Panne : formulaire diagnostic envoye sur WhatsApp -->
       <section class="repair-form section" id="devis" aria-labelledby="devisTitle">
         <div class="section-heading reveal">
-          <div class="eyebrow">Décrivez votre panne</div>
-          <h2 id="devisTitle">Expliquez-nous<span>.</span></h2>
+          <div class="eyebrow">Quelle est votre panne</div>
+          <h2 id="devisTitle">Expliquez-nous</h2>
+          <p>Indiquez le modèle, les symptômes et l'urgence. Ajoutez des photos si vous en avez.</p>
         </div>
 
         <div class="px-shell glass reveal reveal-delay" id="pxShell" aria-label="Formulaire de description de panne">
           <div class="px-matrix" aria-hidden="true"></div>
           <div class="px-aura px-aura-left" aria-hidden="true"></div>
           <div class="px-aura px-aura-right" aria-hidden="true"></div>
+
+          <div class="px-panel-head">
+            <strong>Réponse rapide</strong>
+          </div>
 
           <form id="repairForm" class="px-form" autocomplete="off" novalidate>
             <div class="px-field">
@@ -647,7 +652,7 @@
                 id="problemText"
                 class="px-input"
                 rows="3"
-                placeholder="Décrivez votre panne : modèle, symptômes, ce qui a déclenché le problème…"
+                placeholder="Quelle est votre panne ? Modèle, symptômes, ce qui a déclenché le problème…"
                 aria-label="Description de la panne"
               ></textarea>
             </div>
