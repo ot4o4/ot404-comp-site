@@ -628,6 +628,90 @@
         </div>
       </section>
 
+      <!-- Devis / Panne : formulaire style "AI bar" envoyant sur WhatsApp -->
+      <section class="repair-form section" id="devis" aria-labelledby="devisTitle">
+        <div class="section-heading reveal">
+          <div class="eyebrow">Décrivez votre panne</div>
+          <h2 id="devisTitle">Expliquez-nous,<br /><span>nous répondons vite.</span></h2>
+          <p>Quelques mots et jusqu'à 8 photos ou vidéos. Tout part sur WhatsApp, on revient vers vous sous 30 min.</p>
+        </div>
+
+        <div class="px-shell glass reveal reveal-delay" id="pxShell" aria-label="Formulaire de description de panne">
+          <div class="px-matrix" aria-hidden="true"></div>
+          <div class="px-aura px-aura-left" aria-hidden="true"></div>
+          <div class="px-aura px-aura-right" aria-hidden="true"></div>
+
+          <form id="repairForm" class="px-form" autocomplete="off" novalidate>
+            <div class="px-field">
+              <label class="px-sr-only" for="problemText">Description de la panne</label>
+              <textarea
+                id="problemText"
+                class="px-input"
+                rows="3"
+                placeholder="Décrivez votre panne : modèle, symptômes, ce qui a déclenché le problème…"
+                aria-label="Description de la panne"
+              ></textarea>
+            </div>
+
+            <div class="px-files" id="filePreview" hidden aria-live="polite"></div>
+
+            <div class="px-toolbar">
+              <label class="px-btn px-btn-attach" title="Ajouter photos et vidéos">
+                <input type="file" id="fileInput" accept="image/*,video/*" multiple hidden />
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                <span class="px-sr-only">Ajouter des photos ou vidéos</span>
+              </label>
+
+              <div class="px-pills">
+                <div class="px-pill" data-pill="type" data-value="Mobile">
+                  <svg class="px-pill-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="7" y="2" width="10" height="20" rx="2"/>
+                    <path d="M11 18h2"/>
+                  </svg>
+                  <span class="px-pill-label" id="pillTypeLabel">Mobile</span>
+                  <svg class="px-pill-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                  <div class="px-pill-menu" role="menu" id="pillTypeMenu">
+                    <button type="button" data-value="Mobile" class="active">Mobile</button>
+                    <button type="button" data-value="Ordinateur">Ordinateur</button>
+                    <button type="button" data-value="Microsoudure / carte mère">Microsoudure</button>
+                    <button type="button" data-value="Autre">Autre</button>
+                  </div>
+                </div>
+
+                <div class="px-pill" data-pill="urgency" data-value="Normal">
+                  <svg class="px-pill-icon" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M13 2 3 14h7l-1 8 10-12h-7z"/>
+                  </svg>
+                  <span class="px-pill-label" id="pillUrgencyLabel">Normal</span>
+                  <svg class="px-pill-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                  <div class="px-pill-menu" role="menu" id="pillUrgencyMenu">
+                    <button type="button" data-value="Normal" class="active">Normal</button>
+                    <button type="button" data-value="Urgent">Urgent</button>
+                    <button type="button" data-value="Devis uniquement">Devis</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="px-right">
+                <span class="px-files-count" id="filesCount" hidden></span>
+                <button type="submit" class="px-send" aria-label="Envoyer sur WhatsApp" title="Envoyer sur WhatsApp">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M22 2 11 13"/>
+                    <path d="M22 2 15 22l-4-9-9-4 20-7Z"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <p class="px-hint" id="formHint">
+          Astuce : ajoutez des photos nettes de l'appareil (écran allumé, connecteur, étiquette modèle).
+          <span class="px-hint-sep" aria-hidden="true">·</span>
+          Vos fichiers seront téléchargés pour que vous les joigniez au message WhatsApp qui va s'ouvrir.
+        </p>
+      </section>
+
       <!-- FAQ -->
       <section class="faq section" id="faq">
         <div class="section-heading reveal">
