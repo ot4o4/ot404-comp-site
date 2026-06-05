@@ -5,7 +5,7 @@
 //  - Cross-origin (fonts, etc): stale-while-revalidate
 // Versioned cache for safe upgrades.
 
-const VERSION = "ot404-v1";
+const VERSION = "ot404-v2";
 const CORE_ASSETS = [
   "/",
   "/404.html",
