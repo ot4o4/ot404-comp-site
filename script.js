@@ -242,7 +242,7 @@ if (whatsappFloat && footer) {
 }
 
 // =========================================================
-// Formulaire "Décrivez votre panne" → WhatsApp
+// Formulaire diagnostic WhatsApp
 // =========================================================
 (function initRepairForm() {
   const WHATSAPP_NUMBER = "221772947958";

@@ -2517,7 +2517,7 @@ footer {
 }
 
 /* =========================================================
-   Formulaire diagnostic - Décrivez votre panne (WhatsApp)
+   Formulaire diagnostic WhatsApp
    ========================================================= */
 .px-sr-only {
   position: absolute;
@@ -3121,6 +3121,7 @@ footer {
   width: min(960px, 100%);
   margin: 38px auto 0;
   padding: 22px;
+  z-index: 3;
   overflow: visible;
   border-color: rgba(220, 255, 252, 0.17);
   border-radius: 28px;
@@ -3199,7 +3200,6 @@ footer {
   color: #d9f6f2;
 }
 
-.px-panel-head span,
 .px-panel-head strong {
   display: inline-flex;
   align-items: center;
@@ -3208,18 +3208,6 @@ footer {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-
-.px-panel-head span {
-  color: var(--accent);
-}
-
-.px-panel-head i {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 14px var(--accent);
 }
 
 .px-panel-head strong {
@@ -3374,6 +3362,8 @@ footer {
 }
 
 .px-hint {
+  position: relative;
+  z-index: 1;
   width: min(960px, 100%);
   margin: 18px auto 0;
   padding: 14px 18px;
